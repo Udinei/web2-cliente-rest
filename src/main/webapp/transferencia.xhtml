@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Adaptador Web JSF Mobile - Cliente Rest</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css"/>
+</h:head>
+<h:body>
+    <h:form id="frm">
+        <p:focus/>
+        <p:panel id="painel" header="Transferência Bancária - Cliente Rest">
+            <p:messages id="mensagens"/>
+            <div class="ui-fluid">
+                <p:panelGrid columns="3" layout="grid" columnClasses="ui-grid-col-2, ui-grid-col-2, ui-grid-col-8">
+                    <label class="rotulo">Conta Débito:</label>
+                    <p:inputText id="conta1" value="#{transferenciaFrm.conta1}">
+                        <p:ajax event="blur" execute="@this" update="desc1,mensagens"
+                                listener="#{transferenciaFrm.pesquisaConta1()}"
+                                oncomplete="document.getElementById('frm:desc1').focus()"/>
+                    </p:inputText>
+                    <p:inputText id="desc1" value="#{transferenciaFrm.descricao1}"/>
+
+                    <label class="rotulo">Conta Crédito:</label>
+                    <p:inputText value="#{transferenciaFrm.conta2}">
+                        <p:ajax event="blur" execute="@this" update="desc2,mensagens"
+                                listener="#{transferenciaFrm.pesquisaConta2()}"
+                                oncomplete="document.getElementById('frm:desc2').focus()"/>
+                    </p:inputText>
+                    <p:inputText id="desc2" value="#{transferenciaFrm.descricao2}"/>
+
+                    <label class="rotulo">Valor R$:</label>
+                    <p:inputText id="valor" value="#{transferenciaFrm.valor}"/>
+                    <p:commandButton value="Transferir" styleClass="botao" action="#{transferenciaFrm.transferir}"
+                                     execute="@form" update="painel"/>
+                </p:panelGrid>
+            </div>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

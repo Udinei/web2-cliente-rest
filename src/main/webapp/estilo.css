@@ -1,0 +1,37 @@
+body {
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.rotulo {
+    font-weight: bold;
+    float: right;
+}
+
+.botao {
+    width: 150px !important;
+}
+
+@media (max-width: 700px) {
+    body {
+        font-size: 14px;
+    }
+    .rotulo {
+        float: right;
+    }
+    .botao {
+        width: 150px !important;
+    }
+}
+
+@media (max-width: 640px) {
+    body {
+        font-size: 16px;
+    }
+    .rotulo {
+        float: left;
+    }
+    .botao {
+        width: 100% !important;
+    }
+}
